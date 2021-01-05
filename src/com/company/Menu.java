@@ -22,7 +22,7 @@ public class Menu {
         System.out.println("|  3. Scoreboard           |");
         System.out.println("|  4. Exit                 |");
         System.out.println("============================");
-
+1
         while (!finished) {
             String input = sc.next();
 
@@ -40,7 +40,7 @@ public class Menu {
                     menuScoreboard();
                 }
                 case "4" -> {
-                    System.out.println("You are leaving the programme.");
+                    System.out.println("You quit the game.");
                     System.exit(0);
                 }
                 default -> System.out.println("Wrong choice, please enter it again.");
