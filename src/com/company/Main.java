@@ -3,6 +3,8 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("coucou");
+        Menu menu = new Menu();
+
+        menu.mainMenu();
     }
 }
