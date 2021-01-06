@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
@@ -10,6 +11,8 @@ public class Menu {
      * Function to display the main menu and select an option from this menu.
      */
     public void mainMenu() {
+
+        clearConsole();
 
         boolean finished = false;
 
@@ -22,7 +25,7 @@ public class Menu {
         System.out.println("|  3. Scoreboard           |");
         System.out.println("|  4. Exit                 |");
         System.out.println("============================");
-1
+
         while (!finished) {
             String input = sc.next();
 
@@ -53,6 +56,9 @@ public class Menu {
      */
     public void menuRules() {
 
+        clearConsole();
+        boolean finished = false;
+
         System.out.println("================================================================================");
         System.out.println("|                                GAME RULES                                    |");
         System.out.println("================================================================================");
@@ -66,13 +72,26 @@ public class Menu {
         System.out.println("| The last player who can still move wins.                                     |");
         System.out.println("================================================================================\n");
 
-        mainMenu();
+        System.out.println("Type 'E' to exit the game.");
+
+        while (!finished) {
+            String input = sc.next();
+
+            if ("E".equals(input)) {
+                finished = true;
+                mainMenu();
+            } else {
+                System.out.println("Wrong choice, please enter it again.");
+            }
+        }
     }
 
     /**
      * Function that allows you to play the game.
      */
     public void menuGame() {
+
+        clearConsole();
 
         boolean finished = false;
 
@@ -101,6 +120,8 @@ public class Menu {
      */
     public void menuScoreboard() {
 
+        clearConsole();
+
         boolean finished = false;
 
         System.out.println("============================");
@@ -124,4 +145,19 @@ public class Menu {
     }
 
     // Ici va falloir appeller la class Score.
+
+    public static void clearConsole() {
+        if (System.getProperty("os.name").startsWith("Windows")){
+            try {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+        }
+    }
 }
+

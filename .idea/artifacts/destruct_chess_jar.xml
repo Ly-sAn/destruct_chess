@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="destruct_chess:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/destruct_chess_jar</output-path>
+    <root id="archive" name="destruct_chess.jar">
+      <element id="module-output" name="destruct_chess" />
+    </root>
+  </artifact>
+</component>
