@@ -4,45 +4,40 @@ public class Display {
 
     public static int row, col;
 
-    public static void setupBoard() {
-        int row,col;
+    public static String[][] displayBoard(String[][] matrice) {
+
         String[] tableLetter = {" ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"};
-        String[][] boardGame = new String[10 + 1][11 + 1];
+
+        for (row = 0; row < matrice.length; row++) {
+            for (col = 0; col < matrice[row].length; col++) {
+                if (row == 0) {
+                    matrice[row][col] = (" " + tableLetter[col]);
+                } else if (col == 0)
+                    if (row == 10) {
+                        matrice[row][col] = ("10");
+                    } else {
+                        matrice[row][col] = (" " + row);
+                    }
+                else
+                    matrice[row][col] = " *";
+            }
+        }
+
+        for (row = 0; row < matrice.length; row++) {
+            System.out.println();
+            for (col = 0; col < matrice[row].length; col++) {
+                System.out.print(matrice[row][col]);
+            }
+        }
+
+        return matrice;
+    }
+
+    public static void setupPlayer(String[][] boardGame, Player joueur) {
         int playerX = 5;
         int playerY = 5;
-
-        for(row=0; row<boardGame.length;row++){
-            for(col=0; col<boardGame[row].length;col++){
-                if(row==0) {
-                    boardGame[row][col] = (" " + tableLetter[col]);
-                } else if(col==0)
-                    if (row == 10) {
-                        boardGame[row][col]=("10");
-                    } else {
-                        boardGame[row][col]=(" "+ row);
-                    } else
-                        boardGame[row][col]=" *";
-            }
-        }
         boardGame[playerX][playerY] = " O";
-        boardGame[playerX][playerY+1] = " P";
-
-
-        for(row=0; row<boardGame.length;row++){
-            System.out.println();
-            for(col=0; col<boardGame[row].length;col++){
-                System.out.print(boardGame[row][col]);
-            }
-        }
-
+        boardGame[playerX][playerY + 1] = " P";
     }
-
-    private static void setupPlayer(){
-
-    }
-
-
-
-
-
 }
+

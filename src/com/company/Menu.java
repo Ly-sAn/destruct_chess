@@ -1,14 +1,13 @@
 package com.company;
 
+import com.sun.tools.jconsole.JConsoleContext;
+
 import java.io.IOException;
 import java.util.Scanner;
 import static org.fusesource.jansi.Ansi.*;
 import static org.fusesource.jansi.Ansi.Color.*;
 
-
-
 public class Menu {
-
 
     Scanner sc = new Scanner(System.in);
 
@@ -17,7 +16,7 @@ public class Menu {
      */
     public void mainMenu() {
 
-        clearConsole();
+        ClearConsole.clearConsole();
 
         boolean finished = false;
 
@@ -61,7 +60,8 @@ public class Menu {
      */
     public void menuRules() {
 
-        clearConsole();
+        ClearConsole.clearConsole();
+        
         boolean finished = false;
 
         System.out.println("================================================================================");
@@ -96,7 +96,7 @@ public class Menu {
      */
     public void menuGame() {
 
-        clearConsole();
+        ClearConsole.clearConsole();
 
         boolean finished = false;
 
@@ -106,8 +106,38 @@ public class Menu {
 
         System.out.println("Type 'E' to exit the game.");
 
+        System.out.println("Joueur 1 : Quel est votre pseudo ?");
+        String inputPlayer1 = sc.next();
+        System.out.println("Joueur 2 : Quel est votre pseudo ?");
+        String inputPlayer2 = sc.next();
+
+        String [][] tab = new String[11][12];
+        // Création du plateau
+        BoardGame boardGame = new BoardGame(tab);
+
+        //créer joueurs
+        Player player1 = new Player(inputPlayer1, 5, 5);
+        Player player2 = new Player(inputPlayer2, 5, 6);
+
+        //récupérer les joueurs de la partie en cours
+        Player[] players = boardGame.getPlayers();
+
+        //ajouter dans mon tableau temporaire les joueurs que j'ai crée
+        players[0] = player1;
+        players[1] = player2;
+
+        //modifie les joueurs de la partie en cours
+        boardGame.setPlayers(players);
+
+        //modifie la matrice de la partie en cours
+        //boardGame.setBoardGame(boardGame);
+
+        Game.movePlayer(boardGame, player1, 5, 5);
+
+
         while (!finished) {
-            Display.setupBoard();
+            Display.displayBoard(boardGame.getBoardGame());
+            Display.setupPlayer(boardGame.getBoardGame(), player1);
 
             String input = sc.next();
 
@@ -127,7 +157,7 @@ public class Menu {
      */
     public void menuScoreboard() {
 
-        clearConsole();
+        ClearConsole.clearConsole();
 
         boolean finished = false;
 
@@ -152,19 +182,5 @@ public class Menu {
     }
 
     // Ici va falloir appeller la class Score.
-
-    public static void clearConsole() {
-        if (System.getProperty("os.name").startsWith("Windows")){
-            try {
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } catch (IOException | InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        else{
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
-        }
-    }
 }
 
