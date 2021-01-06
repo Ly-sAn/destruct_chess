@@ -3,6 +3,7 @@ package com.company;
 import java.io.IOException;
 import java.util.Scanner;
 
+
 public class Menu {
 
     Scanner sc = new Scanner(System.in);
@@ -102,6 +103,8 @@ public class Menu {
         System.out.println("Type 'E' to exit the game.");
 
         while (!finished) {
+            Display.generateBoard();
+
             String input = sc.next();
 
             if ("E".equals(input)) {
