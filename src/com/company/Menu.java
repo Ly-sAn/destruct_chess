@@ -2,9 +2,13 @@ package com.company;
 
 import java.io.IOException;
 import java.util.Scanner;
+import static org.fusesource.jansi.Ansi.*;
+import static org.fusesource.jansi.Ansi.Color.*;
+
 
 
 public class Menu {
+
 
     Scanner sc = new Scanner(System.in);
 
@@ -12,7 +16,7 @@ public class Menu {
      * Function to display the main menu and select an option from this menu.
      */
     public void mainMenu() {
-
+        
         clearConsole();
 
         boolean finished = false;
