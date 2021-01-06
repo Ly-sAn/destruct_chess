@@ -16,7 +16,7 @@ public class Menu {
      * Function to display the main menu and select an option from this menu.
      */
     public void mainMenu() {
-        
+
         clearConsole();
 
         boolean finished = false;
@@ -107,7 +107,7 @@ public class Menu {
         System.out.println("Type 'E' to exit the game.");
 
         while (!finished) {
-            Display.generateBoard();
+            Display.setupBoard();
 
             String input = sc.next();
 
