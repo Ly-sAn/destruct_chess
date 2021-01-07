@@ -1,25 +1,18 @@
 package com.company;
 
+import java.util.Random;
+
+/**
+ * Class "Player" which defines a player, represented by a name and coordinates.
+ */
 public class Player {
 
-    String pseudo;
-    int positionX;
-    int positionY;
+    public final String pseudo;
+    public int positionX;
+    public int positionY;
 
-    public Player(String pseudo, int positionX, int positionY) {
+    public Player(String pseudo) {
         this.pseudo = pseudo;
-        this.positionX = positionX;
-        this.positionY = positionY;
-    }
-
-    public Player() {
-        this.pseudo = "jean";
-        this.positionX = 5;
-        this.positionY = 5;
-    }
-
-    public String getPseudo() {
-        return pseudo;
     }
 
     public int getPositionX() {
@@ -30,18 +23,11 @@ public class Player {
         return positionY;
     }
 
-    public void setPseudo(String pseudo) {
-        this.pseudo = pseudo;
-    }
-
-    public int setPositionX(int positionX) {
+    public void setPositionX(int positionX) {
         this.positionX = positionX;
-        return positionX;
     }
 
     public void setPositionY(int positionY) {
         this.positionY = positionY;
     }
-
-
 }
