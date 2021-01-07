@@ -102,7 +102,7 @@ public class Menu {
             String input = sc.next();
 
             //If the user types the letter "E" correctly, we return to the game menu.
-            if ("E".equals(input.toLowerCase())) {
+            if (input.toLowerCase().equals("e")) {
                 finished = true;
                 mainMenu();
             }
@@ -150,7 +150,7 @@ public class Menu {
             //Requests the user to enter the letter "E"
             String input = sc.next();
             //If the user types the letter "E" correctly, we return to the game menu.
-            if ("E".equals(input.toLowerCase())) {
+            if ("e".equals(input.toLowerCase())) {
                 finished = true;
                 mainMenu();
             }
@@ -210,7 +210,7 @@ public class Menu {
             String input = sc.next();
 
             //If the user types the letter "E" correctly, we return to the game menu.
-            if ("E".equals(input.toLowerCase())) {
+            if ("e".equals(input.toLowerCase())) {
                 finished = true;
                 mainMenu();
             }
