@@ -82,40 +82,65 @@ public class Game {
             String input = sc.next();
 
             //Depending on the user's input we will have a different event
-            switch (input){
+            switch (input.toLowerCase()){
 
                 //When "Z" is pressed, the player moves upwards
                 case "z" -> {
-                    playerIn.setPositionX(playerIn.getPositionX() -1);
-                    playerIn.setPositionY(playerIn.getPositionY());
-                    changePlayerPosition(playerIn, player1, player2);
-                    // ... until he played
-                    played = true;
+                    //If the player reaches the board limit, an error message is displayed.
+                    if (playerIn.getPositionX()-1 == 0) {
+                        System.out.println("You can't go that way, you'll leave the game board ...");
+                        played = false;
+                    } else {
+                        playerIn.setPositionX(playerIn.getPositionX() - 1);
+                        playerIn.setPositionY(playerIn.getPositionY());
+                        changePlayerPosition(playerIn, player1, player2);
+                        // ... until he played
+                        played = true;
+                    }
                 }
 
                 //When Z is pressed, the player moves downwards
                 case "s" -> {
-                    playerIn.setPositionX(playerIn.getPositionX() +1);
-                    playerIn.setPositionY(playerIn.getPositionY());
-                    changePlayerPosition(playerIn, player1, player2);
-                    played = true;
+                    //If the player reaches the board limit, an error message is displayed.
+                    if (playerIn.getPositionX()+1 == 11) {
+                        System.out.println("You can't go that way, you'll leave the game board ...");
+                        played = false;
+                    } else {
+                        playerIn.setPositionX(playerIn.getPositionX() + 1);
+                        playerIn.setPositionY(playerIn.getPositionY());
+                        changePlayerPosition(playerIn, player1, player2);
+                        played = true;
+                    }
                 }
 
                 //When Z is pressed, the player moves to the left
                 case "q" -> {
-                    playerIn.setPositionX(playerIn.getPositionX());
-                    playerIn.setPositionY(playerIn.getPositionY() -1);
-                    changePlayerPosition(playerIn, player1, player2);
-                    played = true;
+                    //If the player reaches the board limit, an error message is displayed.
+                    if (playerIn.getPositionY()-1 == 0) {
+                        System.out.println("You can't go that way, you'll leave the game board ...");
+                        played = false;
+                    } else {
+                        playerIn.setPositionX(playerIn.getPositionX());
+                        playerIn.setPositionY(playerIn.getPositionY() - 1);
+                        changePlayerPosition(playerIn, player1, player2);
+                        played = true;
+                    }
                 }
 
                 //When Z is pressed, the player moves to the right
                 case "d" -> {
-                    playerIn.setPositionX(playerIn.getPositionX());
-                    playerIn.setPositionY(playerIn.getPositionY() +1);
-                    changePlayerPosition(playerIn, player1, player2);
-                    played = true;
+                    //If the player reaches the board limit, an error message is displayed.
+                    if (playerIn.getPositionY()+1 == 12) {
+                        System.out.println("You can't go that way, you'll leave the game board ...");
+                        played = false;
+                    } else {
+                        playerIn.setPositionX(playerIn.getPositionX());
+                        playerIn.setPositionY(playerIn.getPositionY() + 1);
+                        changePlayerPosition(playerIn, player1, player2);
+                        played = true;
+                    }
                 }
+                default -> System.out.println("Wrong choice, please enter it again.");
             }
 
             //If the player's turn is over
