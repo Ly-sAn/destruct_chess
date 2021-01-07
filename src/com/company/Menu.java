@@ -118,9 +118,9 @@ public class Menu {
         //créer joueurs
         Player player1 = new Player(inputPlayer1, 5, 5);
         Player player2 = new Player(inputPlayer2, 5, 6);
-
+        System.out.println("PLAYER 1 : " + player2.getPseudo());
         //récupérer les joueurs de la partie en cours
-        Player[] players = boardGame.getPlayers();
+        Player[] players = new Player[2];
 
         //ajouter dans mon tableau temporaire les joueurs que j'ai crée
         players[0] = player1;
@@ -138,6 +138,10 @@ public class Menu {
         while (!finished) {
             Display.displayBoard(boardGame.getBoardGame());
             Display.setupPlayer(boardGame.getBoardGame(), player1);
+
+            System.out.println("\n Où voulez-vous vous déplacez ?");
+            String moveChoice = sc.next();
+
 
             String input = sc.next();
 
