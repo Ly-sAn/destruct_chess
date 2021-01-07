@@ -103,7 +103,6 @@ public class Menu {
         System.out.println("============================");
         System.out.println("|           GAME           |");
         System.out.println("============================");
-
         System.out.println("Type 'E' to exit the game.");
 
         System.out.println("Joueur 1 : Quel est votre pseudo ?");
@@ -111,14 +110,14 @@ public class Menu {
         System.out.println("Joueur 2 : Quel est votre pseudo ?");
         String inputPlayer2 = sc.next();
 
-        String [][] tab = new String[11][12];
         // Création du plateau
+        String [][] tab = new String[11][12];
         BoardGame boardGame = new BoardGame(tab);
 
         //créer joueurs
         Player player1 = new Player(inputPlayer1, 5, 5);
         Player player2 = new Player(inputPlayer2, 5, 6);
-        System.out.println("PLAYER 1 : " + player2.getPseudo());
+        System.out.println("PLAYER 1 : " + player1.getPseudo());
         //récupérer les joueurs de la partie en cours
         Player[] players = new Player[2];
 
@@ -132,12 +131,12 @@ public class Menu {
         //modifie la matrice de la partie en cours
         //boardGame.setBoardGame(boardGame);
 
-        Game.movePlayer(boardGame, player1, 5, 5);
+        //Game.movePlayer(boardGame, player1, 5, 5);
+        //Display.setUpPlayer(boardGame.getBoardGame(), player1, player2);
 
 
         while (!finished) {
-            Display.displayBoard(boardGame.getBoardGame());
-            Display.setupPlayer(boardGame.getBoardGame(), player1);
+            Display.displayBoard(boardGame.getBoardGame(), player1, player2);
 
             System.out.println("\n Où voulez-vous vous déplacez ?");
             String moveChoice = sc.next();

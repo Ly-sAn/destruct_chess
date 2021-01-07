@@ -4,10 +4,11 @@ public class Display {
 
     public static int row, col;
 
-    public static String[][] displayBoard(String[][] matrice) {
+    public static String[][] displayBoard(String[][] matrice, Player joueur1, Player joueur2) {
 
         String[] tableLetter = {" ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"};
-
+        //int playerX = 5;
+        //int playerY = 5;
         for (row = 0; row < matrice.length; row++) {
             for (col = 0; col < matrice[row].length; col++) {
                 if (row == 0) {
@@ -23,6 +24,10 @@ public class Display {
             }
         }
 
+        //matrice[playerX][playerY] = " O";
+       // matrice[playerX][playerY + 1] = " P";
+        setUpPlayer(matrice, joueur1, joueur2);
+
         for (row = 0; row < matrice.length; row++) {
             System.out.println();
             for (col = 0; col < matrice[row].length; col++) {
@@ -33,11 +38,12 @@ public class Display {
         return matrice;
     }
 
-    public static void setupPlayer(String[][] boardGame, Player joueur) {
-        int playerX = 5;
-        int playerY = 5;
-        boardGame[playerX][playerY] = " O";
-        boardGame[playerX][playerY + 1] = " P";
+    public static void setUpPlayer(String[][] boardGame, Player joueur1, Player joueur2) {
+      // int playerX = 5;
+      // int playerY = 5;
+       boardGame[joueur1.positionX][joueur1.positionY] = " O";
+       boardGame[joueur2.positionX][joueur2.positionY] = " P";
+       //boardGame[playerX][playerY + 1] = " P";
     }
 }
 

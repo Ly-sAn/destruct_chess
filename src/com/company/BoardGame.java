@@ -25,5 +25,4 @@ public class BoardGame {
     public Player[] getPlayers() {
         return players;
     }
-
 }

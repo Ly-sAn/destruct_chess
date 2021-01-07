@@ -18,7 +18,6 @@ public class Player {
         this.positionY = 5;
     }
 
-
     public String getPseudo() {
         return pseudo;
     }
@@ -35,8 +34,9 @@ public class Player {
         this.pseudo = pseudo;
     }
 
-    public void setPositionX(int positionX) {
+    public int setPositionX(int positionX) {
         this.positionX = positionX;
+        return positionX;
     }
 
     public void setPositionY(int positionY) {
