@@ -1,5 +1,7 @@
 package com.company;
 
+import org.fusesource.jansi.Ansi;
+
 import java.util.Scanner;
 import static org.fusesource.jansi.Ansi.ansi;
 
@@ -154,7 +156,7 @@ public class Menu {
                 finished = true;
                 mainMenu();
             }
-            // Else an error message will be displayed and you will be asked to retype the letter "E".
+            //Else an error message will be displayed and you will be asked to retype the letter "E".
             else {
                 System.out.println("Wrong choice, please enter \"E\" it again.");
             }
@@ -214,7 +216,7 @@ public class Menu {
                 finished = true;
                 mainMenu();
             }
-            // Else an error message will be displayed and you will be asked to retype the letter "E".
+            //Else an error message will be displayed and you will be asked to retype the letter "E".
             else {
                 System.out.println("Wrong choice, please enter it again.");
             }
