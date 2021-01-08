@@ -1,9 +1,7 @@
 package com.company;
 
-import java.io.IOException;
 import java.util.Scanner;
 import static org.fusesource.jansi.Ansi.*;
-import static org.fusesource.jansi.Ansi.Color.*;
 
 public class Menu {
 
@@ -203,8 +201,6 @@ public class Menu {
 
         setColor("YELLOW", "============================", true);
 
-        //setColor("MAGENTA", "Type 'E' to exit the game.", true);
-
         //Initialization of the players' table
         Player[] players = new Player[2];
 
@@ -219,10 +215,10 @@ public class Menu {
                     idPlayer--;
                 } else {
                     //Adding the name to the table
-                    players[idPlayer] = new Player(pseudo, 5, 5+idPlayer, idPlayer==1?"\uD83D\uDC2D":"\ud83d\udc01");
+                    players[idPlayer] = new Player(pseudo, 5, 4+idPlayer, "\uD83D\uDC2D");
                 }
             } else {
-                players[idPlayer] = new Player(pseudo, 5, 5+idPlayer, idPlayer==1?"\uD83D\uDC2D":"\ud83d\udc01");
+                players[idPlayer] = new Player(pseudo, 5, 4+idPlayer, "\ud83d\udc01");
             }
         }
 

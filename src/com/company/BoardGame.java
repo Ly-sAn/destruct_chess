@@ -32,7 +32,7 @@ public class BoardGame {
                     if (column == -1) {
                         System.out.print("  ");
                     } else {
-                        System.out.print(" " + GetHeaderFromColumn(column));
+                        System.out.print("  " + GetHeaderFromColumn(column));
                     }
                 }
             } else {
@@ -41,11 +41,11 @@ public class BoardGame {
                         System.out.print(row == 9 ? row + 1 : " " +(row + 1));
                     } else {
                         if (p1.isOn(row, column)) {
-                            System.out.print(" " +p1.getRender());
+                            System.out.print("  " +p1.getRender());
                         } else if (p2.isOn(row, column)) {
-                            System.out.print(" " +p2.getRender());
+                            System.out.print("  " +p2.getRender());
                         } else {
-                            System.out.print(" " + boardGame[row][column].getRender());
+                            System.out.print("  " + boardGame[row][column].getRender());
                         }
                     }
                 }
@@ -64,27 +64,27 @@ public class BoardGame {
         switch (column)
         {
             case 0:
-                return " A";
+                return "A";
             case 1:
                 return " B";
             case 2:
                 return " C";
             case 3:
-                return " D";
+                return "D";
             case 4:
                 return " E";
             case 5:
                 return "F";
             case 6:
-                return "G";
+                return " G";
             case 7:
-                return "H ";
+                return " H";
             case 8:
-                return "I ";
+                return "I";
             case 9:
-                return "J ";
+                return " J";
             case 10:
-                return "K ";
+                return " K";
             default:
                 return "";
         }

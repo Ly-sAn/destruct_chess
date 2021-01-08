@@ -3,7 +3,6 @@ package com.company;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
-import static org.fusesource.jansi.Ansi.ansi;
 
 /**
  * Class "Game" where the logic of the game can be found.
@@ -49,9 +48,10 @@ public class Game {
                 boardGame.displayBoardGame(player1, player2);
                 isRunning = false;
                 System.out.println(playerOut.pseudo + " loose ! You just got stuck ! \uD83D\uDC4E\uD83C\uDFFC");
+                Menu.setColor("MAGENTA", "Type 'E' to exit the game.", true);
                 break;
             }
-            System.out.println("\nNow it's the turn of " + playerIn.pseudo + " :");
+            System.out.println("\nNow it's the turn of " + playerIn.pseudo + " " + playerIn.getRender() + " :");
             //Display boardGame with the players
             boardGame.displayBoardGame(player1, player2);
             //While a player doesn't move
@@ -75,6 +75,7 @@ public class Game {
             } else {
                 boardGame.displayBoardGame(player1, player2);
                 System.out.println(playerIn.pseudo + " win ! I knew it, you're the best player ! \uD83C\uDFC6");
+                Menu.setColor("MAGENTA", "Type 'E' to exit the game.", true);
             }
         }
     }
@@ -148,7 +149,7 @@ public class Game {
             //if the case is not available
             if (!boardGame.isCaseIsAvailable(nextPositionX, nextPositionY, playerIn, playerOut)) {
                 played = false;
-                System.out.println("You can't go here!");
+                System.out.println("You can't go here !");
             } else {
                 playerIn.setPositionX(nextPositionX);
                 playerIn.setPositionY(nextPositionY);
@@ -164,18 +165,18 @@ public class Game {
      * @return
      */
     private boolean eatCaseChoice(Player playerIn, Player playerOut) {
-        System.out.println("Enter a case to eat");
+        System.out.println("Enter a case to eat (MIAAAAM) :");
         int selectedCol;
         //Choose a column while selected row is not between 0 and 10
         do {
-            System.out.println("Choose a column");
+            System.out.println("Choose a column :");
             //Convert letter in number
             selectedCol = convertLetterToNumber(sc.next().toUpperCase());
         } while (selectedCol == -1);
         int selectedRow;
         //Choose row
         do {
-            System.out.println("Choose a row");
+            System.out.println("Choose a row :");
             try {
                 Scanner scannerTp = new Scanner(System.in);
                 selectedRow = scannerTp.nextInt();
@@ -185,7 +186,7 @@ public class Game {
         } while (0 > selectedRow || selectedRow > 10);
         //If case is not available
         if (!boardGame.isCaseIsAvailable(selectedRow - 1, selectedCol, playerIn, playerOut)) {
-            System.out.println("You can not eat this case");
+            System.out.println("You can not eat this case !");
             return false;
         }
         //Eat a case

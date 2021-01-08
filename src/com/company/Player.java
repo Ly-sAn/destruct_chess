@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.Random;
-
 /**
  * Class "Player" which defines a player, represented by a name and coordinates.
  */
