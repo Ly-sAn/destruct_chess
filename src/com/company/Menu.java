@@ -2,15 +2,23 @@ package com.company;
 
 import java.io.IOException;
 import java.util.Scanner;
+
 import static org.fusesource.jansi.Ansi.*;
 import static org.fusesource.jansi.Ansi.Color.*;
-
-
-
 
 public class Menu {
 
     Scanner sc = new Scanner(System.in);
+
+    public static void setColor(String color, String menuString, boolean println){
+
+        if (println){
+            System.out.println( ansi().eraseScreen().fg(Color.valueOf(color)).a(menuString).reset() );
+        } else {
+            System.out.print( ansi().eraseScreen().fg(Color.valueOf(color)).a(menuString).reset() );
+        }
+
+    }
 
 
     /**
@@ -18,14 +26,16 @@ public class Menu {
      */
     public void mainMenu() {
 
+        setColor("BLUE", "HELLOOOOO", true);
+
         System.out.println( ansi().eraseScreen().fg(BLUE).a("Hello").fg(GREEN).a(" World").reset() );
 
         clearConsole();
 
         boolean finished = false;
 
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("============================").reset() );
-
+        //System.out.println( ansi().eraseScreen().fg(YELLOW).a("============================").reset() );
+        setColor("YELLOW", "============================", true );
         System.out.print( ansi().eraseScreen().fg(YELLOW).a("|     ").reset() );
         System.out.print( ansi().eraseScreen().fg(BLUE).a("DESTRUCT CHEESE").reset() );
         System.out.println( ansi().eraseScreen().fg(YELLOW).a("      |").reset() );
