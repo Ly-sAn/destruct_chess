@@ -34,35 +34,34 @@ public class Menu {
 
         boolean finished = false;
 
-        //System.out.println( ansi().eraseScreen().fg(YELLOW).a("============================").reset() );
         setColor("YELLOW", "============================", true );
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("|     ").reset() );
-        System.out.print( ansi().eraseScreen().fg(BLUE).a("DESTRUCT CHEESE").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("      |").reset() );
+        setColor("YELLOW", "|     ", false);
+        setColor("BLUE", "DESTRUCT CHEESE", false);
+        setColor("YELLOW", "      |", true);
 
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("============================").reset() );
+        setColor("YELLOW", "============================", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("|     ").reset() );
-        System.out.print( ansi().eraseScreen().fg(WHITE).a("Options:").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("             |").reset() );
+        setColor("YELLOW", "|     ", false);
+        setColor("WHITE", "Options:", false);
+        setColor("YELLOW", "             |", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("|     ").reset() );
-        System.out.print( ansi().eraseScreen().fg(GREEN).a("1. Game Rules").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("        |").reset() );
+        setColor("YELLOW", "|     ", false);
+        setColor("GREEN", "1. Game Rules", false);
+        setColor("YELLOW", "        |", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("|     ").reset() );
-        System.out.print( ansi().eraseScreen().fg(CYAN).a("2. Play").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("              |").reset() );
+        setColor("YELLOW", "|     ", false);
+        setColor("CYAN", "2. Play", false);
+        setColor("YELLOW", "              |", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("|     ").reset() );
-        System.out.print( ansi().eraseScreen().fg(BLACK).a("3. Scoreboard").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("        |").reset() );
+        setColor("YELLOW", "|     ", false);
+        setColor("BLACK", "3. Scoreboard", false);
+        setColor("YELLOW", "        |", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("|     ").reset() );
-        System.out.print( ansi().eraseScreen().fg(MAGENTA).a("4. Exit").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("              |").reset() );
+        setColor("YELLOW", "|     ", false);
+        setColor("MAGENTA", "4. Exit", false);
+        setColor("YELLOW", "              |", true);
 
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("============================").reset() );
+        setColor("YELLOW", "============================", true);
 
         while (!finished) {
             String input = sc.next();
@@ -81,10 +80,10 @@ public class Menu {
                     menuScoreboard();
                 }
                 case "4" -> {
-                    System.out.println( ansi().eraseScreen().fg(MAGENTA).a("You quit the game.").reset() );
+                    setColor("MAGENTA", "You quit the game.", true);
                     System.exit(0);
                 }
-                default -> System.out.println( ansi().eraseScreen().fg(RED).a("Wrong choice, please enter it again.").reset() );
+                default -> setColor("RED", "Wrong choice, please enter it again.", true);
             }
         }
     }
@@ -97,54 +96,54 @@ public class Menu {
         clearConsole();
         boolean finished = false;
 
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("================================================================================").reset() );
+        setColor("YELLOW", "================================================================================", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("|                                ").reset() );
-        System.out.print( ansi().eraseScreen().fg(GREEN).a("GAME RULES").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("                                    |").reset() );
+        setColor("YELLOW", "|                                ", false);
+        setColor("GREEN", "GAME RULES", false);
+        setColor("YELLOW", "                                    |", true);
 
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("================================================================================").reset() );
+        setColor("YELLOW", "================================================================================", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("|                           ").reset() );
-        System.out.print( ansi().eraseScreen().fg(BLUE).a("The aim of the game ?").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("                              |").reset() );
+        setColor("YELLOW", "|                           ", false);
+        setColor("BLUE", "The aim of the game ?", false);
+        setColor("YELLOW", "                              |", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("| ").reset() );
-        System.out.print( ansi().eraseScreen().fg(CYAN).a("To destroy as many squares on the board as possible without getting trapped.").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a(" |").reset() );
+        setColor("YELLOW", "| ", false);
+        setColor("CYAN", "To destroy as many squares on the board as possible without getting trapped.", false);
+        setColor("YELLOW", " |", true);
 
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("|                                                                              |").reset() );
+        setColor("YELLOW", "|                                                                              |", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("|                           ").reset() );
-        System.out.print( ansi().eraseScreen().fg(BLUE).a("What are the rules ?").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("                               |").reset() );
+        setColor("YELLOW", "|                           ", false);
+        setColor("BLUE", "What are the rules ?", false);
+        setColor("YELLOW", "                               |", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("| ").reset() );
-        System.out.print( ansi().eraseScreen().fg(CYAN).a("During his turn, a player can :").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("                                              |").reset() );
+        setColor("YELLOW", "| ", false);
+        setColor("CYAN", "During his turn, a player can :", false);
+        setColor("YELLOW", "                                              |", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("| ").reset() );
-        System.out.print( ansi().eraseScreen().fg(CYAN).a("- move his pawn one square (vertically or horizontally)").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("                      |").reset() );
+        setColor("YELLOW", "| ", false);
+        setColor("CYAN", "- move his pawn one square (vertically or horizontally)", false);
+        setColor("YELLOW", "                      |", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("| ").reset() );
-        System.out.print( ansi().eraseScreen().fg(CYAN).a("- then he destroys one square on the board.").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("                                  |").reset() );
+        setColor("YELLOW", "| ", false);
+        setColor("CYAN", "- then he destroys one square on the board.", false);
+        setColor("YELLOW", "                                  |", true);
 
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("|                                                                              |").reset() );
+        setColor("YELLOW", "|                                                                              |", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("|                           ").reset() );
-        System.out.print( ansi().eraseScreen().fg(BLUE).a("How do I win ?").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("                                     |").reset() );
+        setColor("YELLOW", "|                           ", false);
+        setColor("BLUE", "How do I win ?", false);
+        setColor("YELLOW", "                                     |", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("| ").reset() );
-        System.out.print( ansi().eraseScreen().fg(CYAN).a("The last player who can still move wins.").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("                                     |").reset() );
+        setColor("YELLOW", "| ", false);
+        setColor("CYAN", "The last player who can still move wins.", false);
+        setColor("YELLOW", "                                     |", true);
 
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("================================================================================\n").reset() );
+        setColor("YELLOW", "================================================================================\n", true);
 
 
-        System.out.println( ansi().eraseScreen().fg(MAGENTA).a("Type 'E' to exit the game.").reset() );
+        setColor("MAGENTA", "Type 'E' to exit the game.", true);
 
         while (!finished) {
             String input = sc.next();
@@ -153,7 +152,7 @@ public class Menu {
                 finished = true;
                 mainMenu();
             } else {
-                System.out.println( ansi().eraseScreen().fg(RED).a("Wrong choice, please enter it again.").reset() );
+                setColor("RED", "Wrong choice, please enter it again.", true);
             }
         }
     }
@@ -167,15 +166,15 @@ public class Menu {
 
         boolean finished = false;
 
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("============================").reset() );
+        setColor("YELLOW", "============================", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("|           ").reset() );
-        System.out.print( ansi().eraseScreen().fg(CYAN).a("GAME").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("           |").reset() );
+        setColor("YELLOW", "|           ", false);
+        setColor("CYAN", "GAME", false);
+        setColor("YELLOW", "           |", true);
 
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("============================").reset() );
+        setColor("YELLOW", "============================", true);
 
-        System.out.println( ansi().eraseScreen().fg(MAGENTA).a("Type 'E' to exit the game.").reset() );
+        setColor("MAGENTA", "Type 'E' to exit the game.", true);
 
         while (!finished) {
             String input = sc.next();
@@ -184,7 +183,7 @@ public class Menu {
                 finished = true;
                 mainMenu();
             } else {
-                System.out.println( ansi().eraseScreen().fg(RED).a("Wrong choice, please enter it again.").reset() );
+                setColor("RED", "Wrong choice, please enter it again.", true);
             }
         }
 
@@ -200,25 +199,25 @@ public class Menu {
 
         boolean finished = false;
 
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("============================").reset() );
+        setColor("YELLOW", "============================", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("|       ").reset() );
-        System.out.print( ansi().eraseScreen().fg(BLACK).a("SCORE BOARD").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("        |").reset() );
+        setColor("YELLOW", "|       ", false);
+        setColor("BLACK", "SCORE BOARD", false);
+        setColor("YELLOW", "        |", true);
 
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("============================").reset() );
+        setColor("YELLOW", "============================", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("| ").reset() );
-        System.out.print( ansi().eraseScreen().fg(GREEN).a("Highest scores :").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("         |").reset() );
+        setColor("YELLOW", "| ", false);
+        setColor("GREEN", "Highest scores :", false);
+        setColor("YELLOW", "         |", true);
 
-        System.out.print( ansi().eraseScreen().fg(YELLOW).a("|").reset() );
-        System.out.print( ansi().eraseScreen().fg(CYAN).a("                          ").reset() );
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("|").reset() );
+        setColor("YELLOW", "|", false);
+        setColor("CYAN", "                          ", false);
+        setColor("YELLOW", "|", true);
 
-        System.out.println( ansi().eraseScreen().fg(YELLOW).a("============================\n").reset() );
+        setColor("YELLOW", "============================\n", true);
 
-        System.out.println( ansi().eraseScreen().fg(MAGENTA).a("Type 'E' to exit the scoreboard.").reset() );
+        setColor("MAGENTA", "Type 'E' to exit the scoreboard.", true);
 
         while (!finished) {
             String input = sc.next();
@@ -227,7 +226,7 @@ public class Menu {
                 finished = true;
                 mainMenu();
             } else {
-                System.out.println( ansi().eraseScreen().fg(RED).a("Wrong choice, please enter it again.").reset() );
+                setColor("RED", "Wrong choice, please enter it again.", true);
             }
         }
     }
