@@ -139,7 +139,7 @@ public class Menu {
             //Creation of a variable to check the size of the user's pseudo
             String pseudo = checkPseudo(idPlayer + 1, players);
             //Adding the name to the table
-            players[idPlayer] = new Player(pseudo);
+            players[idPlayer] = new Player(pseudo, 5, 5+idPlayer, idPlayer==1?"\uD83D\uDC2D":"\ud83d\udc01");
         }
 
         //Start a new game
