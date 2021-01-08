@@ -8,11 +8,30 @@ import java.util.Random;
 public class Player {
 
     public final String pseudo;
-    public int positionX;
-    public int positionY;
+    private int positionX;
+    private int positionY;
+    private String render;
 
-    public Player(String pseudo) {
+    public Player(String pseudo, int positionX, int positionY, String render) {
         this.pseudo = pseudo;
+        this.positionX = positionX;
+        this.positionY = positionY;
+        this.render = render;
+    }
+
+    public String getRender(){
+        return render;
+    }
+
+    /**
+     * Function who set if player is on this case
+     * @param positionX
+     * @param positionY
+     * @return
+     */
+    public boolean isOn(int positionX, int positionY)
+    {
+        return this.positionX == positionX && this.positionY == positionY;
     }
 
     public int getPositionX() {

@@ -5,73 +5,139 @@ package com.company;
  */
 public class BoardGame {
 
-    public static int row, col;
-    private String[][] boardGame;
+    private Case[][] boardGame;
+
+    //constructor
+    public BoardGame(){
+        boardGame = new Case[10][];
+        for (int row = 0; row < boardGame.length; row++)
+        {
+            boardGame[row] = new Case[11];
+            for (int column = 0; column < boardGame[row].length; column++)
+            {
+                boardGame[row][column] = new Case(row, column);
+            }
+        }
+    }
 
     /**
-     * Creating a function to display the game board
-     * @param joueur1
-     * @param joueur2
-     * @return the game board
+     * Function who display boarGame with the 2 players
+     * @param p1
+     * @param p2
      */
-    public String[][] BoardGame(Player joueur1, Player joueur2) {
-
-        //Table initialisation: 11 by 12
-        boardGame = new String[11][12];
-
-        //Initialisation of a letter table
-        String[] tableLetter = {" ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"};
-
-        //For each line
-        for (row = 0; row < boardGame.length; row++) {
-            //For each column
-            for (col = 0; col < boardGame[row].length; col++) {
-                //If the line = 0, I call up my letter table
-                if (row == 0) {
-                    boardGame[row][col] = (" " + tableLetter[col]);
+    public void displayBoardGame(Player p1, Player p2)
+    {
+        for (int row = -1; row < boardGame.length; row++)
+        {
+            if (row == -1)
+            {
+                for (int column = -1; column < boardGame[0].length; column++)
+                {
+                    if (column == -1)
+                    {
+                        System.out.print("  ");
+                    }
+                    else
+                    {
+                        System.out.print(" " + GetHeaderFromColumn(column));
+                    }
                 }
-                //Else if the column = 0 ...
-                else if (col == 0)
-                    //If the lines = 10, I display "10"
-                    if (row == 10) {
-                        boardGame[row][col] = ("10");
-                    }
-                    //Else I display spaces
-                    else {
-                        boardGame[row][col] = (" " + row);
-                    }
-                //Else I fill in my chart with "*"
-                else
-                    boardGame[row][col] = " *";
             }
-        }
-
-        //Call setUpPlayer function
-        setUpPlayer(boardGame, joueur1, joueur2);
-
-        //Display each row and column of the game board
-        for (row = 0; row < boardGame.length; row++) {
+            else
+            {
+                for (int column = -1; column < boardGame[row].length; column++)
+                {
+                    if (column == -1)
+                    {
+                        System.out.print(row == 9 ? row + 1 : " " +(row + 1));
+                    }
+                    else
+                    {
+                        if (p1.isOn(row, column))
+                        {
+                            System.out.print(" " +p1.getRender());
+                        }
+                        else if (p2.isOn(row, column))
+                        {
+                            System.out.print(" " +p2.getRender());
+                        }
+                        else
+                        {
+                            System.out.print(" " + boardGame[row][column].getRender());
+                        }
+                    }
+                }
+            }
             System.out.println();
-            for (col = 0; col < boardGame[row].length; col++) {
-                System.out.print(boardGame[row][col]);
-            }
         }
-        return boardGame;
     }
 
     /**
-     * Creation of a function to put the players in the game board
-     * @param boardGame
-     * @param joueur1
-     * @param joueur2
+     * Function who get the letter to put above boardGame
+     * @param column
+     * @return
      */
-    public static void setUpPlayer(String[][] boardGame, Player joueur1, Player joueur2) {
-
-        //Depending on its position on the tray :
-        //player 1 will be represented by an O
-        boardGame[joueur1.positionX][joueur1.positionY] = " O";
-
-        //player 2 will be represented by a P
-        boardGame[joueur2.positionX][joueur2.positionY] = " P";
+    public String GetHeaderFromColumn(int column)
+    {
+        switch (column)
+        {
+            case 0:
+                return " A";
+            case 1:
+                return " B";
+            case 2:
+                return " C";
+            case 3:
+                return " D";
+            case 4:
+                return " E";
+            case 5:
+                return "F";
+            case 6:
+                return "G";
+            case 7:
+                return "H ";
+            case 8:
+                return "I ";
+            case 9:
+                return "J ";
+            case 10:
+                return "K ";
+            default:
+                return "";
+        }
     }
+
+    /**
+     * Function who set if case is available
+     * @param row
+     * @param col
+     * @param player1
+     * @param player2
+     * @return
+     */
+    public boolean isCaseIsAvailable(int row, int col, Player player1, Player player2){
+        return !boardGame[row][col].getIsEaten() && !player1.isOn(row, col) && !player2.isOn(row, col) ;
+    }
+
+    /**
+     * Function who mark the case has eaten
+     * @param row
+     * @param column
+     */
+    public void setCaseIsEaten(int row, int column){
+        boardGame[row][column].setIsEaten(true);
+    }
+
+    /**
+     * Function who get if the case is eaten
+     * @param row
+     * @param column
+     * @return
+     */
+    public boolean getCaseIsEaten(int row, int column){
+        return boardGame[row][column].getIsEaten();
+    }
+
+
 }
