@@ -7,7 +7,7 @@ public class BoardGame {
 
     private Case[][] boardGame;
 
-    //constructor
+    //Constructor
     public BoardGame(){
         boardGame = new Case[10][];
         for (int row = 0; row < boardGame.length; row++)
@@ -25,44 +25,26 @@ public class BoardGame {
      * @param p1
      * @param p2
      */
-    public void displayBoardGame(Player p1, Player p2)
-    {
-        for (int row = -1; row < boardGame.length; row++)
-        {
-            if (row == -1)
-            {
-                for (int column = -1; column < boardGame[0].length; column++)
-                {
-                    if (column == -1)
-                    {
+    public void displayBoardGame(Player p1, Player p2) {
+        for (int row = -1; row < boardGame.length; row++) {
+            if (row == -1) {
+                for (int column = -1; column < boardGame[0].length; column++) {
+                    if (column == -1) {
                         System.out.print("  ");
-                    }
-                    else
-                    {
+                    } else {
                         System.out.print(" " + GetHeaderFromColumn(column));
                     }
                 }
-            }
-            else
-            {
-                for (int column = -1; column < boardGame[row].length; column++)
-                {
-                    if (column == -1)
-                    {
+            } else {
+                for (int column = -1; column < boardGame[row].length; column++) {
+                    if (column == -1) {
                         System.out.print(row == 9 ? row + 1 : " " +(row + 1));
-                    }
-                    else
-                    {
-                        if (p1.isOn(row, column))
-                        {
+                    } else {
+                        if (p1.isOn(row, column)) {
                             System.out.print(" " +p1.getRender());
-                        }
-                        else if (p2.isOn(row, column))
-                        {
+                        } else if (p2.isOn(row, column)) {
                             System.out.print(" " +p2.getRender());
-                        }
-                        else
-                        {
+                        } else {
                             System.out.print(" " + boardGame[row][column].getRender());
                         }
                     }

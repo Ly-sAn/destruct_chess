@@ -1,11 +1,27 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.Scanner;
-import static org.fusesource.jansi.Ansi.ansi;
+import static org.fusesource.jansi.Ansi.*;
+import static org.fusesource.jansi.Ansi.Color.*;
 
 public class Menu {
 
     Scanner sc = new Scanner(System.in);
+
+    /**
+     * Function to set color to println
+     * @param color
+     * @param menuString
+     * @param println
+     */
+    public static void setColor(String color, String menuString, boolean println){
+        if (println){
+            System.out.println( ansi().eraseScreen().fg(Color.valueOf(color)).a(menuString).reset() );
+        } else {
+            System.out.print( ansi().eraseScreen().fg(Color.valueOf(color)).a(menuString).reset() );
+        }
+    }
 
     /**
      * Function to display the main menu and select an option from this menu.
@@ -19,15 +35,34 @@ public class Menu {
         boolean finished = false;
 
         //Display the menu
-        System.out.println("============================");
-        System.out.println("|     DESTRUCT CHEESE      |");
-        System.out.println("============================");
-        System.out.println("| Options:                 |");
-        System.out.println("|  1. Game Rules           |");
-        System.out.println("|  2. Play                 |");
-        System.out.println("|  3. Scoreboard           |");
-        System.out.println("|  4. Exit                 |");
-        System.out.println("============================");
+        setColor("YELLOW", "============================", true );
+        setColor("YELLOW", "|     ", false);
+        setColor("BLUE", "DESTRUCT CHEESE", false);
+        setColor("YELLOW", "      |", true);
+
+        setColor("YELLOW", "============================", true);
+
+        setColor("YELLOW", "|     ", false);
+        setColor("WHITE", "Options:", false);
+        setColor("YELLOW", "             |", true);
+
+        setColor("YELLOW", "|     ", false);
+        setColor("GREEN", "1. Game Rules", false);
+        setColor("YELLOW", "        |", true);
+
+        setColor("YELLOW", "|     ", false);
+        setColor("CYAN", "2. Play", false);
+        setColor("YELLOW", "              |", true);
+
+        setColor("YELLOW", "|     ", false);
+        setColor("BLACK", "3. Scoreboard", false);
+        setColor("YELLOW", "        |", true);
+
+        setColor("YELLOW", "|     ", false);
+        setColor("MAGENTA", "4. Exit", false);
+        setColor("YELLOW", "              |", true);
+
+        setColor("YELLOW", "============================", true);
 
         // ... until I have entered a key
         while (!finished) {
@@ -59,12 +94,12 @@ public class Menu {
 
                 //If the user types 4, the game is quit
                 case "4" -> {
-                    System.out.println("You quit the game.");
+                    setColor("MAGENTA", "You quit the game.", true);
                     System.exit(0);
                 }
 
                 //If the user types anything else, an error message is displayed
-                default -> System.out.println("Wrong choice, please enter it again.");
+                default -> setColor("RED", "Wrong choice, please enter 'E' it again.", true);
             }
         }
     }
@@ -81,19 +116,53 @@ public class Menu {
         boolean finished = false;
 
         //Display the rules
-        System.out.println("================================================================================");
-        System.out.println("|                                GAME RULES                                    |");
-        System.out.println("================================================================================");
-        System.out.println("|                           The aim of the game ?                              |");
-        System.out.println("| To destroy as many squares on the board as possible without getting trapped. |\n");
-        System.out.println("|                            What are the rules ?                              |");
-        System.out.println("| During his turn, a player can :                                              |");
-        System.out.println("| - move his pawn one square (vertically or horizontally)                      |");
-        System.out.println("| - then he destroys one square on the board.                                  |\n");
-        System.out.println("|                                How do I win ?                                |");
-        System.out.println("| The last player who can still move wins.                                     |");
-        System.out.println("================================================================================\n");
-        System.out.println("Type 'E' to exit the game.");
+        setColor("YELLOW", "================================================================================", true);
+
+        setColor("YELLOW", "|                                ", false);
+        setColor("GREEN", "GAME RULES", false);
+        setColor("YELLOW", "                                    |", true);
+
+        setColor("YELLOW", "================================================================================", true);
+
+        setColor("YELLOW", "|                           ", false);
+        setColor("BLUE", "The aim of the game ?", false);
+        setColor("YELLOW", "                              |", true);
+
+        setColor("YELLOW", "| ", false);
+        setColor("CYAN", "To destroy as many squares on the board as possible without getting trapped.", false);
+        setColor("YELLOW", " |", true);
+
+        setColor("YELLOW", "|                                                                              |", true);
+
+        setColor("YELLOW", "|                           ", false);
+        setColor("BLUE", "What are the rules ?", false);
+        setColor("YELLOW", "                               |", true);
+
+        setColor("YELLOW", "| ", false);
+        setColor("CYAN", "During his turn, a player can :", false);
+        setColor("YELLOW", "                                              |", true);
+
+        setColor("YELLOW", "| ", false);
+        setColor("CYAN", "- move his pawn one square (vertically or horizontally)", false);
+        setColor("YELLOW", "                      |", true);
+
+        setColor("YELLOW", "| ", false);
+        setColor("CYAN", "- then he destroys one square on the board.", false);
+        setColor("YELLOW", "                                  |", true);
+
+        setColor("YELLOW", "|                                                                              |", true);
+
+        setColor("YELLOW", "|                           ", false);
+        setColor("BLUE", "How do I win ?", false);
+        setColor("YELLOW", "                                     |", true);
+
+        setColor("YELLOW", "| ", false);
+        setColor("CYAN", "The last player who can still move wins.", false);
+        setColor("YELLOW", "                                     |", true);
+
+        setColor("YELLOW", "================================================================================\n", true);
+
+        setColor("MAGENTA", "Type 'E' to exit the game.", true);
 
         // ... until I have entered a key
         while (!finished) {
@@ -109,7 +178,7 @@ public class Menu {
 
             // Else an error message will be displayed and you will be asked to retype the letter "E".
             else {
-                System.out.println("Wrong choice, please enter \"E\" it again.");
+                setColor("RED", "Wrong choice, please enter 'E' it again.", true);
             }
         }
     }
@@ -126,10 +195,15 @@ public class Menu {
         boolean finished = false;
 
         //Display the game
-        System.out.println("============================");
-        System.out.println("|           GAME           |");
-        System.out.println("============================");
-        //System.out.println("Type 'E' to exit the game.");
+        setColor("YELLOW", "============================", true);
+
+        setColor("YELLOW", "|           ", false);
+        setColor("CYAN", "GAME", false);
+        setColor("YELLOW", "           |", true);
+
+        setColor("YELLOW", "============================", true);
+
+        //setColor("MAGENTA", "Type 'E' to exit the game.", true);
 
         //Initialization of the players' table
         Player[] players = new Player[2];
@@ -138,8 +212,18 @@ public class Menu {
         for (int idPlayer = 0; idPlayer < 2; idPlayer++) {
             //Creation of a variable to check the size of the user's pseudo
             String pseudo = checkPseudo(idPlayer + 1, players);
-            //Adding the name to the table
-            players[idPlayer] = new Player(pseudo, 5, 5+idPlayer, idPlayer==1?"\uD83D\uDC2D":"\ud83d\udc01");
+            //If the pseudo is identical we start again
+            if (idPlayer == 1) {
+                if (pseudo.equals(players[idPlayer-1].pseudo)) {
+                    System.out.println("This username is already taken, please choose another one !");
+                    idPlayer--;
+                } else {
+                    //Adding the name to the table
+                    players[idPlayer] = new Player(pseudo, 5, 5+idPlayer, idPlayer==1?"\uD83D\uDC2D":"\ud83d\udc01");
+                }
+            } else {
+                players[idPlayer] = new Player(pseudo, 5, 5+idPlayer, idPlayer==1?"\uD83D\uDC2D":"\ud83d\udc01");
+            }
         }
 
         //Start a new game
@@ -154,9 +238,9 @@ public class Menu {
                 finished = true;
                 mainMenu();
             }
-            // Else an error message will be displayed and you will be asked to retype the letter "E".
+            //Else an error message will be displayed and you will be asked to retype the letter "E".
             else {
-                System.out.println("Wrong choice, please enter \"E\" it again.");
+                setColor("RED", "Wrong choice, please enter 'E' it again.", true);
             }
         }
     }
@@ -195,13 +279,25 @@ public class Menu {
         //Declare a boolean to false ...
         boolean finished = false;
 
-        System.out.println("============================");
-        System.out.println("|       SCORE BOARD        |");
-        System.out.println("============================");
-        System.out.println("| Highest scores :         |");
-        System.out.println("|                          |");
-        System.out.println("============================\n");
-        System.out.println("Type 'E' to exit the scoreboard.");
+        setColor("YELLOW", "============================", true);
+
+        setColor("YELLOW", "|       ", false);
+        setColor("BLACK", "SCORE BOARD", false);
+        setColor("YELLOW", "        |", true);
+
+        setColor("YELLOW", "============================", true);
+
+        setColor("YELLOW", "| ", false);
+        setColor("GREEN", "Highest scores :", false);
+        setColor("YELLOW", "         |", true);
+
+        setColor("YELLOW", "|", false);
+        setColor("CYAN", "                          ", false);
+        setColor("YELLOW", "|", true);
+
+        setColor("YELLOW", "============================\n", true);
+
+        setColor("MAGENTA", "Type 'E' to exit the scoreboard.", true);
 
         //... until I have entered a key
         while (!finished) {
@@ -214,9 +310,9 @@ public class Menu {
                 finished = true;
                 mainMenu();
             }
-            // Else an error message will be displayed and you will be asked to retype the letter "E".
+            //Else an error message will be displayed and you will be asked to retype the letter "E".
             else {
-                System.out.println("Wrong choice, please enter it again.");
+                setColor("RED", "Wrong choice, please enter 'E' it again.", true);
             }
         }
     }

@@ -1,8 +1,8 @@
 package com.company;
 
 import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.Scanner;
-
 import static org.fusesource.jansi.Ansi.ansi;
 
 /**
@@ -31,23 +31,37 @@ public class Game {
         boolean isRunning = true;
 
         //It is the player who plays
-        Player playerIn = player1;
-        Player playerOut = player2;
+        Player playerIn;
+        Player playerOut;
+        Random random = new Random();
+        int randomTemp = random.nextInt(10);
+        if (randomTemp % 2 == 0) {
+            playerIn = player1;
+            playerOut = player2;
+        } else {
+            playerIn = player2;
+            playerOut = player1;
+        }
 
         while (isRunning) {
-            //is the last playerIn block himself
+            //Is the last playerIn block himself
             if(!canPlayerMove(playerIn, playerOut)){
+                boardGame.displayBoardGame(player1, player2);
+                isRunning = false;
+                System.out.println(playerOut.pseudo + " loose ! You just got stuck ! \uD83D\uDC4E\uD83C\uDFFC");
                 break;
             }
             System.out.println("\nNow it's the turn of " + playerIn.pseudo + " :");
-            //displau boardGame with the players
+            //Display boardGame with the players
             boardGame.displayBoardGame(player1, player2);
-            //while a player doesn't move
+            //While a player doesn't move
             while (!choiceMovePlayer(playerIn, playerOut)) ;
+
             boardGame.displayBoardGame(player1, player2);
-            //while a player doesn't choose a case to eat
+            //While a player doesn't choose a case to eat
             while (!eatCaseChoice(playerIn, playerOut)) ;
-            //if player move ?
+
+            //If player move ?
             isRunning = canPlayerMove(playerIn, playerOut);
             if (isRunning) {
                 //If it is player 1's turn to play, it is to the following to play
@@ -58,10 +72,11 @@ public class Game {
                     playerIn = player1;
                     playerOut = player2;
                 }
+            } else {
+                boardGame.displayBoardGame(player1, player2);
+                System.out.println(playerIn.pseudo + " win ! I knew it, you're the best player ! \uD83C\uDFC6");
             }
-            System.out.println(playerIn.pseudo + " win !");
         }
-
     }
 
     /**
@@ -128,7 +143,7 @@ public class Game {
                 played = false;
             }
         }
-        //if the player can move
+        //If the player can move
         if (played) {
             //if the case is not available
             if (!boardGame.isCaseIsAvailable(nextPositionX, nextPositionY, playerIn, playerOut)) {
@@ -151,14 +166,14 @@ public class Game {
     private boolean eatCaseChoice(Player playerIn, Player playerOut) {
         System.out.println("Enter a case to eat");
         int selectedCol;
-        //choose a column while selected row is not between 0 and 10
+        //Choose a column while selected row is not between 0 and 10
         do {
             System.out.println("Choose a column");
-            //convert letter in number
+            //Convert letter in number
             selectedCol = convertLetterToNumber(sc.next().toUpperCase());
         } while (selectedCol == -1);
         int selectedRow;
-        //choose row
+        //Choose row
         do {
             System.out.println("Choose a row");
             try {
@@ -168,12 +183,12 @@ public class Game {
                 selectedRow = -1;
             }
         } while (0 > selectedRow || selectedRow > 10);
-        // if case is not available
+        //If case is not available
         if (!boardGame.isCaseIsAvailable(selectedRow - 1, selectedCol, playerIn, playerOut)) {
-            System.out.println("You cannit eat this case");
+            System.out.println("You can not eat this case");
             return false;
         }
-        //eat a case
+        //Eat a case
         boardGame.setCaseIsEaten(selectedRow - 1, selectedCol);
         return true;
     }
@@ -188,7 +203,7 @@ public class Game {
 
         int posX = playerOut.getPositionX();
         int posY = playerOut.getPositionY();
-        //return true if player can move
+        //Return true if player can move
         return
                 boardGame.isCaseIsAvailable(posX, posY - 1, playerIn, playerOut) ||
                 boardGame.isCaseIsAvailable(posX, posY + 1, playerIn, playerOut) ||
