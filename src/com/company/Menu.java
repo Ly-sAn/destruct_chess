@@ -140,10 +140,10 @@ public class Menu {
         for (int idPlayer = 0; idPlayer < 2; idPlayer++) {
             //Creation of a variable to check the size of the user's pseudo
             String pseudo = checkPseudo(idPlayer + 1, players);
-            //Si le pseudo est identique on recommence
+            //If the pseudo is identical we start again
             if (idPlayer == 1) {
                 if (pseudo.equals(players[idPlayer-1].pseudo)) {
-                    System.out.println("Pseudo identique");
+                    System.out.println("This username is already taken, please choose another one !");
                     idPlayer--;
                 } else {
                     //Adding the name to the table
