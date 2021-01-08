@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="destruct_chess:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/destruct_chess_jar2</output-path>
+    <root id="archive" name="destruct_chess.jar">
+      <element id="module-output" name="destruct_chess" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../JAVA POO/carrace-fast-furious/jansi-2.0.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

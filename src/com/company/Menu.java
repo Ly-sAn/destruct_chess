@@ -140,8 +140,18 @@ public class Menu {
         for (int idPlayer = 0; idPlayer < 2; idPlayer++) {
             //Creation of a variable to check the size of the user's pseudo
             String pseudo = checkPseudo(idPlayer + 1, players);
-            //Adding the name to the table
-            players[idPlayer] = new Player(pseudo, 5, 5+idPlayer, idPlayer==1?"\uD83D\uDC2D":"\ud83d\udc01");
+            //Si le pseudo est identique on recommence
+            if (idPlayer == 1) {
+                if (pseudo.equals(players[idPlayer-1].pseudo)) {
+                    System.out.println("Pseudo identique");
+                    idPlayer--;
+                } else {
+                    //Adding the name to the table
+                    players[idPlayer] = new Player(pseudo, 5, 5+idPlayer, idPlayer==1?"\uD83D\uDC2D":"\ud83d\udc01");
+                }
+            } else {
+                players[idPlayer] = new Player(pseudo, 5, 5+idPlayer, idPlayer==1?"\uD83D\uDC2D":"\ud83d\udc01");
+            }
         }
 
         //Start a new game

@@ -31,8 +31,17 @@ public class Game {
         boolean isRunning = true;
 
         //It is the player who plays
-        Player playerIn = player1;
-        Player playerOut = player2;
+        Player playerIn;
+        Player playerOut;
+        Random random = new Random();
+        int randomTemp = random.nextInt(10);
+        if (randomTemp % 2 == 0) {
+            playerIn = player1;
+            playerOut = player2;
+        } else {
+            playerIn = player2;
+            playerOut = player1;
+        }
 
         while (isRunning) {
             //Is the last playerIn block himself
@@ -47,9 +56,11 @@ public class Game {
             boardGame.displayBoardGame(player1, player2);
             //While a player doesn't move
             while (!choiceMovePlayer(playerIn, playerOut)) ;
+
             boardGame.displayBoardGame(player1, player2);
             //While a player doesn't choose a case to eat
             while (!eatCaseChoice(playerIn, playerOut)) ;
+
             //If player move ?
             isRunning = canPlayerMove(playerIn, playerOut);
             if (isRunning) {
